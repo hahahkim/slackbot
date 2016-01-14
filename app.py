@@ -16,6 +16,7 @@ data = eval(data)
 
 @app.route('/yasik', methods=['GET','POST'])
 def yasik():
+    print request.form
     command = request.form['command']
     text = request.form['text']
     print command
