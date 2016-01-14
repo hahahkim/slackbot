@@ -9,7 +9,7 @@ import time
 app = Flask(__name__)
 
 #load welfare data
-f = open("gg")
+f = open("welfare_db")
 data = f.read().replace("\n", "")
 f.close()
 data = eval(data)
