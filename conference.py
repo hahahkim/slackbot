@@ -50,6 +50,6 @@ def get_Confer_Info(Searchname=""):
                  
         for i in range(len(ConNameList)):
                 if ConNameList[i].lower().find(Searchname.lower()) >= 0:
-                        RETURNSTR += ConNameList[i] + " - " + ConLocList[i] + " - " + ConDateList[i][DEAD] + ENTERSTR
+                        RETURNSTR += ConNameList[i] + " - " + ConDateList[i][DEAD] + ENTERSTR
 
         return RETURNSTR

@@ -9,8 +9,6 @@ import yasik, conference
 app = Flask(__name__)
 
 
-
-
 @app.route('/yasik', methods=['GET','POST'])
 def yasik_bot():
     print request.form
