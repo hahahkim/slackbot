@@ -1,47 +1,30 @@
 # -*- coding: utf-8 -*-
 from flask import Flask,request,Response
-import urllib2
-import re
-import random
-import time
 import yasik, conference
 
 app = Flask(__name__)
 
+def make_bot(name, handler):
+    def handler_wrapper():
+        command = request.form['command']
+        text = request.form['text']
+        print command
 
-@app.route('/yasik', methods=['GET','POST'])
-def yasik_bot():
-    print request.form
-    command = request.form['command']
-    text = request.form['text']
-    print command
+        msg="""{
+        "response_type" : "in_channel",
+        "text" : "%s"
+        }
+        """ % handler(text)
+        print msg
 
-    msg="""{
-    "response_type" : "in_channel",
-    "text" : "%s"
-    }
-    """ % yasik.get_yasik(text)
-    print msg
-
-    return msg, 200, {"Content-Type":"application/json"}
-
-
-@app.route('/conf', methods=['GET','POST'])
-def conf_bot():
-    print request.form
-    command = request.form['command']
-    text = request.form['text']
-    print command
-    msg="""{
-    "response_type" : "in_channel",
-    "text" : "%s"
-    }
-    """ % conference.get_Confer_Info(text)
-    print msg
-
-    return msg, 200, {"Content-Type":"application/json"}
+        return msg, 200, {"Content-Type":"application/json"}
+    app.add_url_rule("/"+name,name,handler_wrapper, methods=['POST'])
 
 if __name__ == '__main__':
+    # add functions for initialize
     conference.init()
-    app.run(debug=True, host='0.0.0.0', port=8080)
+    # make bots with command and handler
+    make_bot("yasik", yasik.get_yasik)
+    make_bot("conf", conference.get_Confer_Info)
+    app.run(debug=False, host='0.0.0.0', port=8080, threaded=True)
 
