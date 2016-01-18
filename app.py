@@ -18,13 +18,11 @@ def make_bot(name, handler):
         print msg
 
         return msg, 200, {"Content-Type":"application/json"}
-    app.add_url_rule("/"+name,name,handler_wrapper, methods=['POST'])
+    app.add_url_rule("/"+name,name,handler_wrapper, methods=['GET','POST'])
 
 if __name__ == '__main__':
-    # add functions for initialize
-    conference.init()
     # make bots with command and handler
     make_bot("yasik", yasik.get_yasik)
     make_bot("conf", conference.get_Confer_Info)
-    app.run(debug=False, host='0.0.0.0', port=8080, threaded=True)
+    app.run(debug=False, host='0.0.0.0', port=10000, threaded=True)
 

@@ -9,6 +9,9 @@ ConLocList = []
 ConDateList = []
 
 def init():
+        ConNameList = []
+        ConLocList = []
+        ConDateList = []
         #Crawling
         url = "http://www.confsearch.org/confsearch/faces/pages/topic.jsp?topic=Security&sortMode=1&graphicView=0"
         
@@ -54,3 +57,5 @@ def get_Confer_Info(Searchname=""):
                         RETURNSTR += ConNameList[i] + " - " + ConDateList[i][DEAD] + ENTERSTR
 
         return RETURNSTR
+#initialize
+init()
