@@ -9,8 +9,11 @@ ConLocList = []
 ConDateList = []
 
 def init():
+        global ConNameList
         ConNameList = []
+        global ConLocList
         ConLocList = []
+        global ConDateList
         ConDateList = []
         #Crawling
         url = "http://www.confsearch.org/confsearch/faces/pages/topic.jsp?topic=Security&sortMode=1&graphicView=0"

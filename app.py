@@ -1,6 +1,7 @@
+#!/usr/bin/python2.7
 # -*- coding: utf-8 -*-
 from flask import Flask,request,Response
-import yasik, conference
+import yasik, conference, sadari
 
 app = Flask(__name__)
 
@@ -24,5 +25,6 @@ if __name__ == '__main__':
     # make bots with command and handler
     make_bot("yasik", yasik.get_yasik)
     make_bot("conf", conference.get_Confer_Info)
-    app.run(debug=False, host='0.0.0.0', port=10000, threaded=True)
+    make_bot("sadari", sadari.sadari)
+    app.run( host='0.0.0.0', port=10000, threaded=True, debug=False)
 
