@@ -35,7 +35,8 @@ def init():
         for dates in html_date:
                 templist.append(dates.span.string)
                 if index_couter%4 == 3:
-                        ConDateList.append(templist)
+                    ConDateList.append(templist)
+                    templist = []
                 index_couter+=1    
                                    
         print len(ConNameList) 
@@ -57,7 +58,7 @@ def get_Confer_Info(Searchname=""):
                  
         for i in range(len(ConNameList)):
                 if ConNameList[i].lower().find(Searchname.lower()) >= 0:
-                        RETURNSTR += ConNameList[i] + " - " + ConDateList[i][DEAD] + ENTERSTR
+                        RETURNSTR += str(ConNameList[i]) + " - Deadline: " + str(ConDateList[i][DEAD]) + ENTERSTR
 
         return RETURNSTR
 #initialize
